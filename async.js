@@ -1,5 +1,7 @@
 window.onload = function(){
-  var http = new XMLHttpRequest();
+
+  // comment -  AJAX request
+  /*var http = new XMLHttpRequest();
 
   http.onreadystatechange = function(){
     if(http.readyState == 4 && http.status == 200){
@@ -14,8 +16,48 @@ window.onload = function(){
   $.get("data/tweets.json", function(data){
     console.log(data);
   });
-  console.log('test');
-  
+  console.log('test');*/
+
+
+function handleError(jqXHR, textStatus, error){
+  console.log(error);
+}
+
+$.ajax({
+  type: "GET",
+  url: "data/tweets.json",
+  success: cbTweets,
+  error: handleError
+  });
+
+function cbTweets(data){
+  console.log(data);
+}
+
+
+$.ajax({
+  type: "GET",
+  url: "data/friends.json",
+  success: cbFriends,
+  error: handleError
+  });
+
+function cbFriends(data){
+  console.log(data);
+}
+
+$.ajax({
+  type: "GET",
+  url: "data/videos.json",
+  success: cbVideos,
+  error: handleError
+  });
+
+function cbVideos(data){
+  console.log(data);
+}
+
+
 };
 
 /*READY STATES
